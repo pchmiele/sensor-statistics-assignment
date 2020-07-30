@@ -75,5 +75,27 @@ object MainAppSpec extends DefaultRunnableSpec {
       )
       checkProgramAgainstDataFromDir("multipleValidFiles", expectedResult)
     },
+
+    testM("should correctly measure statistics for dir with multiple valid files with only NaNs") {
+      val expectedResult = MultipleSensorStatisticsReport(
+        2,
+        Map(
+          "s1" -> SingleSensorStatisticsReport("s1", 3, 3, None),
+          "s2" -> SingleSensorStatisticsReport("s2", 3, 3, None),
+          "s3" -> SingleSensorStatisticsReport("s3", 1, 1, None))
+      )
+      checkProgramAgainstDataFromDir("multipleValidFilesOnlyNans", expectedResult)
+    },
+
+    testM("should correctly measure statistics for dir with multiple invalid files") {
+      val expectedResult = MultipleSensorStatisticsReport(
+        2,
+        Map(
+          "s1" -> SingleSensorStatisticsReport("s1", 3, 1, Some(new SensorStatistics(10, 54f, 98))),
+          "s2" -> SingleSensorStatisticsReport("s2", 3, 0, Some(new SensorStatistics(78, 82f, 88))),
+          "s3" -> SingleSensorStatisticsReport("s3", 1, 1, None))
+      )
+      checkProgramAgainstDataFromDir("multipleInvalidFiles", expectedResult)
+    }
   )
 }
