@@ -49,7 +49,6 @@ lazy val commonSettings = Seq(
   scalacOptions ++= scalacSettings
 )
 
-
 lazy val root = (project in file("."))
   .configs(IntegrationTest)
   .settings(

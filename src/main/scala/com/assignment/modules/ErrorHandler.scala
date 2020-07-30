@@ -14,7 +14,7 @@ object ErrorHandler {
   val live = ZLayer.fromService { (console: Console.Service) =>
     new Service {
       override def handleError(throwable: Throwable): UIO[Unit] = throwable match {
-        case NoArgs => console.putStrLn("No arguments provided")
+        case NoArgs => console.putStrLn("No arguments provided. Please provide path to directory with sensors data.")
         case failure => console.putStrLn(failure.getLocalizedMessage)
       }
     }
