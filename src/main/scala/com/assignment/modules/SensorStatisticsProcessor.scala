@@ -3,16 +3,11 @@ package com.assignment.modules
 import java.nio.file.Path
 
 import com.assignment.domain.SensorMeasurement
-import com.assignment.modules.StringConstants.{NaN, comma}
+import com.assignment.domain.StringConstants.{NaN, comma}
 import zio.ZLayer
 import zio.blocking.Blocking
 import zio.macros.accessible
 import zio.stream.ZStream
-
-object StringConstants {
-  val NaN = "NaN"
-  val comma = ","
-}
 
 @accessible
 object SensorStatisticsProcessor {
