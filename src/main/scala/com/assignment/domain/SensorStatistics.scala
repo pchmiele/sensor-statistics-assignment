@@ -85,7 +85,7 @@ case class MultipleSensorStatisticsReport(
       .sortBy{ case (_, value) => value.avg }(Ordering[Float].reverse)
       .map { case (key, sensor) =>
         val min  = sensor.sensorStatistics.map(_.min.toString).getOrElse(NaN)
-        val avg = sensor.sensorStatistics.map(_.avg.toString).getOrElse(NaN)
+        val avg = sensor.sensorStatistics.map(_.avg.round.toString).getOrElse(NaN)
         val max = sensor.sensorStatistics.map(_.max.toString).getOrElse(NaN)
         (key,min,avg,max)
       }
