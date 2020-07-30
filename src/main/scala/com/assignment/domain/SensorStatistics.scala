@@ -4,11 +4,11 @@ import com.assignment.domain.StringConstants.NaN
 
 case class SensorStatistics(
   min: Int,
-  avg: Int,
+  avg: Float,
   max: Int
 )
 object SensorStatistics {
-  def apply(value: Int): SensorStatistics = new SensorStatistics(value, value, value)
+  def apply(value: Int): SensorStatistics = new SensorStatistics(value, value.toFloat, value)
 }
 
 case class SingleSensorStatisticsReport(
@@ -27,7 +27,7 @@ case class SingleSensorStatisticsReport(
     copy(sensorStatistics = Some(sensorStatistics))
 
   def avg: Float =
-    sensorStatistics.fold(Float.MinValue)(_.avg.toFloat)
+    sensorStatistics.fold(Float.MinValue)(_.avg)
 
   def validMeasurementsCount = numOfProcessedMeasurements - numOfFailedMeasurements
 
