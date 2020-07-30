@@ -25,7 +25,6 @@ object FileReader {
           .fromFile(path)
           .aggregate(ZTransducer.utf8Decode >>> ZTransducer.splitLines)
 
-      // TODO: check when file for given path does not exist
       override def listCsvFiles(path: String): Task[List[Path]] = IO(
         Option(new File(path))
           .flatMap(file => Option(file.listFiles(csvFilesFilter)))

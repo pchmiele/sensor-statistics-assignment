@@ -18,8 +18,7 @@ object SensorStatisticsProcessor {
 
   val live = ZLayer.fromService { (fileReader: FileReader.Service) =>
     new Service {
-      //TODO: check if there is no ,
-      //TODO: check if there is not valid int as second param
+
       private def lineToMeasurement(line: String): Option[SensorMeasurement] = {
         line.split(comma).toList match {
           case sensorId :: NaN  :: _ => Some(SensorMeasurement(sensorId, None))
