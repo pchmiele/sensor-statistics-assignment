@@ -16,7 +16,7 @@ object Main extends App {
       measurements <- processMeasurementsFrom(csvFilePaths)
       report <- combineMeasurements(csvFilePaths.length, measurements)
       _ <- renderReport(report)
-    } yield ()
+    } yield report
 
   override def run(args: List[String]) = {
     program(args)
