@@ -112,7 +112,7 @@ s3,NaN,NaN,NaN
 
 ## Notes
 
-- [done] (checked for multiple large files - 8 files 1GB each and with only 256 MB of memory) Single daily report file can be very large, and can exceed program memory
+- [done] (checked for multiple large files - 8 files 1 GB each and with only 256 MB of memory) Single daily report file can be very large, and can exceed program memory
 - [done] Program should only use memory for its internal state (no disk, no database)
 - [done] Any open source library can be used (besides Spark) 
 - [done] (ZIO used) Please use vanilla scala, akka-stream, monix or similar technology. 
